@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
-// chris weld
+// chris weld is a gunga
 import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
