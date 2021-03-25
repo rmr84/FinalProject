@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
 // am i gay
+//yes
 import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
