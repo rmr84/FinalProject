@@ -5,10 +5,11 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
+// chris weld
 import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
-//i got a huge hog
+
 //TO-DO List:
 //Iterator
 //Figure out second data structure
