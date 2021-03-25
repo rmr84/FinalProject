@@ -1,3 +1,8 @@
+// 1. stage all changes
+// 2. commit
+// 3. pull 
+// 4. push 
+
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.io.FileNotFoundException;
@@ -5,7 +10,7 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
-// chris weld is a gunga
+// chris weld
 import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
