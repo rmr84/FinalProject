@@ -62,7 +62,7 @@ public class GcClass {
                 System.out.println("Are you adding a new gift card or modifying an existing gift card? (A)/(M)");
                 letter = incmd.nextLine();
                  }
-                if (letter.equals("M")) {
+                if (letter.equalsIgnoreCase("M")) {
                     int modNum = -1;
                     while (!(modNum<=0 || modNum >gcList.size())) { //check number within list
                         //create input for number
@@ -127,11 +127,9 @@ public class GcClass {
                     code = codeRand();
                 	newGC.setCodeNum(code);
                     for (int i = 0; i < gcList.size() - 1; i++) {
-                    	
-                    	
                     	while (gcList.get(newGC.getChrono()).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); {
-                    		  code = codeRand();
-                             newGC.setCodeNum(code);
+                    		code = codeRand();
+                            newGC.setCodeNum(code);
                     	}
                     }
                     	
@@ -157,8 +155,9 @@ public class GcClass {
                             balTry = Double.parseDouble(balInput);
                             flag = false;
                             }
-                        catch (NumberFormatException e){}
+                        catch (NumberFormatException e){
                     }
+                }
                     newGC.setInitBal(balTry);
                     System.out.println("Inital balance set!\n");
                     balInput = "";

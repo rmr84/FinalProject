@@ -52,7 +52,6 @@ public class ArrayList<T> implements List<T> {
     public T get(int index) {
     	if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
-			
 		}
 		return (T)list[index];
     }
@@ -76,7 +75,7 @@ public class ArrayList<T> implements List<T> {
     
     public int lastIndexOf(T obj) {
     	  if (obj == null) {
-    	        for (int i = size-1; i >= 0; i--)
+    	    for (int i = size-1; i >= 0; i--)
     	        if (list[i]==null)
     	            return i;
     	    } else {

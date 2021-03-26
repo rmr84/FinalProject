@@ -207,7 +207,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
 	
 
 
-		private boolean isPrime(int n) {
+	private boolean isPrime(int n) {
         if (n < 2) {
             return false;
         }
