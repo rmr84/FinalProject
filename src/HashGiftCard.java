@@ -143,7 +143,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
        }
     }
     @SuppressWarnings("unchecked")
-    private void add(K key, V value) {
+    public void add(K key, V value) {
     	int index = getHashIndex(key);
     	Node n = new Node(key, value);
     	n.setNext((Node)entries[index]);
@@ -183,7 +183,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
 		return (index < 0) ? (index + capacity) : index;
 	}
 	
-	private void rehash(int newCapacity) {
+	public void rehash(int newCapacity) {
 		newCapacity = nextPrime(newCapacity);
 		Object[] oldEntries = entries;
 		entries = new Object[newCapacity];

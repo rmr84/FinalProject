@@ -28,7 +28,11 @@ public class GcClass {
     String letter = "x";
     String inLine = "";
     String[] sArray;
+    int index = 0;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
+    Dictionary<User, Integer> dict = new HashGiftCard<>(150);               // implement hashgiftcard
+
+
     try {    
         File gcout = new File("giftcard.txt");                               // create new file
         Scanner in = new Scanner(gcout);
@@ -37,6 +41,7 @@ public class GcClass {
         if (gcout.exists() && in.hasNext()) {
             while (in.hasNext()) {
                     GiftCard gc = new GiftCard();                            // create gift card object
+                    User user = new User();
                     inLine = in.nextLine();
                     sArray=inLine.split("\\s"); //splits into array based on spaces
                         gc.setChrono(Integer.parseInt(sArray[0]));
@@ -120,6 +125,7 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();//create & add new gift card & set number based on list size
                     gcList.add(newGC);
+                    HashGiftCard.put(User, 1);
                     newGC.setChrono((gcList.size()-1) +1);
  
                     System.out.println("This will be gift card number "  + newGC.getChrono() + "\n");

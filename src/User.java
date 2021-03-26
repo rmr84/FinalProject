@@ -1,5 +1,6 @@
 
 public class User {
-	// have arraylist of giftcards/???
+	User user = new User();
+	
 
 }
