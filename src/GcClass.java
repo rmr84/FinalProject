@@ -10,7 +10,6 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
-// chris weld
 import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
@@ -139,7 +138,7 @@ public class GcClass {
                     //code rand will make a sequence of 8 random digits
  
                     System.out.println("Randomizing gift card code... \nGift card code will be " + code + "\n");
-                    //code = codeRand();
+                    
                     String active = "poop";
                     while (!(active.equalsIgnoreCase("Y") || active.equalsIgnoreCase("N"))) {//get active status from user
                         System.out.println("Is this gift card currently active? (Y/N)");
