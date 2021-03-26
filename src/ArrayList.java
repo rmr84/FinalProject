@@ -51,7 +51,7 @@ public class ArrayList<T> implements List<T> {
     @SuppressWarnings("unchecked")
     public T get(int index) {
     	if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException();
+			index++;
 		}
 		return (T)list[index];
     }

@@ -30,7 +30,7 @@ public class GcClass {
     String[] sArray;
     int index = 0;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
-    Dictionary<User, Integer> dict = new HashGiftCard<>(150);               // implement hashgiftcard
+   //Dictionary<User, Integer> dict = new HashGiftCard<>(150);               // implement hashgiftcard
 
 
     try {    
@@ -125,15 +125,15 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();//create & add new gift card & set number based on list size
                     gcList.add(newGC);
-                    HashGiftCard.put(User, 1);
+                   // HashGiftCard.put(User, 1);
                     newGC.setChrono((gcList.size()-1) +1);
  
                     System.out.println("This will be gift card number "  + newGC.getChrono() + "\n");
                     String code = "";
                     code = codeRand();
                 	newGC.setCodeNum(code);
-                    for (int i = 0; i < gcList.size() - 1; i++) {
-                    	while (gcList.get(newGC.getChrono()).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); {
+                    for (int i = 0; i < gcList.size() - 1 - 1; i++) {
+                    	while (gcList.get(newGC.getChrono()).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
                     		code = codeRand();
                             newGC.setCodeNum(code);
                     	}
