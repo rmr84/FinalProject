@@ -123,7 +123,7 @@ public class GcClass {
                 else if (letter.equalsIgnoreCase("A")){
                     System.out.println("Okay, adding new gift card...");
  
-                    GiftCard newGC = new GiftCard();//create & add new gift card & set number based on list size
+                    GiftCard newGC = new GiftCard();            //create & add new gift card & set number based on list size
                     gcList.add(newGC);
                    // HashGiftCard.put(User, 1);
                     newGC.setChrono((gcList.size()-1) +1);
@@ -175,7 +175,7 @@ public class GcClass {
                     if (balInput.equalsIgnoreCase("Y")) {
                         balInput="";
                         flag = true;
-                        while (flag || balTry > newGC.getInitBal()){//make sure current balance will not be greater than initial
+                        while (flag || balTry > newGC.getInitBal()){         //make sure current balance will not be greater than initial
                             System.out.println("What is the current balance of this card? Ex. 50.25");
                             balInput=incmd.nextLine();
                             try{    //try catch for parsing to ensure a double is input
@@ -186,7 +186,7 @@ public class GcClass {
                         }
                         newGC.setCurrBal(balTry);
                     }
-                    else if (balInput.equalsIgnoreCase("N")){//balance is same as initial, hasn't been used
+                    else if (balInput.equalsIgnoreCase("N")){               //balance is same as initial, hasn't been used
                         newGC.setCurrBal(newGC.getInitBal());
                     }
                     System.out.println("Current balance set!\n");
@@ -224,14 +224,14 @@ incmd.close();
         }
         return ret;
 }
-    private static String codeRand() {	//creates a random 8 digit code of random combination of letters and numbers
+    private static String codeRand() {	                    //creates a random 8 digit code of random combination of letters and numbers
         
     	
     	String code = "";
         int itemp =0;
         char rChar; 
         for (int i = 0; i<8;i++) {
-            itemp = rand(1,0);//50/50 chance it does a letter or number
+            itemp = rand(1,0);                              //50/50 chance it does a letter or number
             if (itemp==0) {
                 itemp = rand(90,65);
                 rChar = (char)itemp;
@@ -247,19 +247,13 @@ incmd.close();
     public static int rand(int max, int min) {
     	
         Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;//this method from google works great :)
+        return r.nextInt((max - min) + 1) + min;        //this method from google works great :)
+
     }
-    
-    /*public Iterator<GiftCard> cards() {
-    	 return new Iterator<GiftCard>();
-    	 do we need to write our own or can we import and use java's? 
-    	
-		return null;
-    	
-   } */
+} 
     
     
     
-}
+
 
 
