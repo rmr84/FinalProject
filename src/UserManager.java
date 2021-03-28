@@ -16,7 +16,7 @@ public class UserManager {
     public static User enterUserID(){
         String s = "";
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter User ID or X if you don't have one");
+        System.out.println("Enter User ID: ");
         s = scanner.nextLine();
         User u = users.get(s);
         return u;
