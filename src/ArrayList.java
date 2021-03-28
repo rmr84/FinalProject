@@ -159,7 +159,7 @@ public class ArrayList<T> implements List<T> {
             @Override
             public void add(T e) {
                 //Insert before next
-                AList.this.add(nextIndex++, e);
+                ArrayList.this.add(nextIndex++, e);
             }
 
         };
@@ -184,7 +184,7 @@ public class ArrayList<T> implements List<T> {
     	}
     	
         obj = get(index);
-        AList.this.add(index++, obj);
+        ArrayList.this.add(index++, obj);
     	return obj;
     }
 

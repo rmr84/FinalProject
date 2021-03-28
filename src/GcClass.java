@@ -15,8 +15,8 @@ import java.util.Random;
 import java.io.FileWriter;
 
 //TO-DO List:
-//Iterator
-//Figure out second data structure
+//Iterator (DONE)
+//Figure out second data structure (DONE)
 //File output working --DONE
 //modifying a current value presently does not work
 //randomization method needs to be altered to ensure no duplicates (DONE)
@@ -38,18 +38,24 @@ public class GcClass {
         Scanner in = new Scanner(gcout);
         PrintWriter fout = new PrintWriter(gcout);                           // printwriter to write to file    
          
+        //UserManager.initialize();
+        //String userName = UserManager.promptForUser()
+
         if (gcout.exists() && in.hasNext()) {
             while (in.hasNext()) {
                     GiftCard gc = new GiftCard();                            // create gift card object
-                    User user = new User();
                     inLine = in.nextLine();
-                    sArray=inLine.split("\\s"); //splits into array based on spaces
+                    sArray=inLine.split("\\s");                             // splits into array based on spaces
                         gc.setChrono(Integer.parseInt(sArray[0]));
                         gc.setCodeNum(sArray[1]);
                         gc.setActive(sArray[2].equalsIgnoreCase("true"));
                         gc.setInitBal(Integer.parseInt(sArray[3]));
                         gc.setCurrBal(Double.parseDouble(sArray[4]));
-                        gcList.add(gc);      
+                        gcList.add(gc);
+                        //UserManager.addCardToUser(userName, gc.getCodeNum);      
+                        //////////////// UserManagerClass -- readinputfrom file and load to dictionary
+                        ///////////////          UserManager.addUser(scanner.next());
+                        //////////////           UserManager.addUser(userName, firstName, lastName);
             }
              
         }
@@ -125,6 +131,7 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();            //create & add new gift card & set number based on list size
                     gcList.add(newGC);
+                    get(newGC.put());
                    // HashGiftCard.put(User, 1);
                     newGC.setChrono((gcList.size()-1) +1);
  
@@ -251,9 +258,3 @@ incmd.close();
 
     }
 } 
-    
-    
-    
-
-
-

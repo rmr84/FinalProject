@@ -13,6 +13,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
     }
     
     
+    
     public HashGiftCard(int initialCapacity) {
         entries = new Object[initialCapacity];
         size = 0;
@@ -204,9 +205,6 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
 		assert counter == size;
 	}
 
-	
-
-
 	private boolean isPrime(int n) {
         if (n < 2) {
             return false;
@@ -269,6 +267,5 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
         public void setNext(Node next) {
             this.next = next;
         }
-
     }
 }
