@@ -138,7 +138,7 @@ public class GcClass {
                 	newGC.setCodeNum(code);
                   
                     for (int i = 0; i < gcList.size() - 1 - 1; i++) {
-                    	while (gcList.get(newGC.getChrono()).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
+                    	while (gcList.get(newGC.getChrono() - 1).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
                     		code = codeRand();
                             newGC.setCodeNum(code);
                     	}
@@ -162,7 +162,7 @@ public class GcClass {
                     while (flag){
                         System.out.println("What is the initial balance of this card? Ex 100.00 ");
                         balInput = incmd.nextLine();
-                        try{    //try catch for parsing to ensure a double is input
+                        try {    //try catch for parsing to ensure a double is input
                             balTry = Double.parseDouble(balInput);
                             flag = false;
                             }
