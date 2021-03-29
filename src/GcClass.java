@@ -34,12 +34,11 @@ public class GcClass {
         Scanner in = new Scanner(gcout);
         PrintWriter fout = new PrintWriter(gcout);                           // printwriter to write to file    
          
-        
-        //String userName = UserManager.promptForUser()
-
+    
         if (gcout.exists() && in.hasNext()) {
             while (in.hasNext()) {
                     GiftCard gc = new GiftCard();                            // create gift card object
+                    
                     inLine = in.nextLine();
                     sArray=inLine.split("\\s");                             // splits into array based on spaces
                         gc.setChrono(Integer.parseInt(sArray[0]));
@@ -48,6 +47,8 @@ public class GcClass {
                         gc.setInitBal(Integer.parseInt(sArray[3]));
                         gc.setCurrBal(Double.parseDouble(sArray[4]));
                         gcList.add(gc);
+                        
+
                         //UserManager.addCardToUser(userName, gc.getCodeNum);      
                        
             }
@@ -58,7 +59,7 @@ public class GcClass {
             try {gcout.createNewFile();} catch (IOException e){}
  
         }
-        // prompt user for 
+        // prompt user for user ID here, call "getUserId " from user.java
         while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N"))) { //check input for alter collection
             System.out.println("Would you like to modify the gift card collection or add a new one? (Y/N):");
             letter = incmd.nextLine();
