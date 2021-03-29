@@ -1,24 +1,54 @@
-import java.util.UUID;
 
+import java.util.Scanner;
 public class User {
+	Scanner in = new Scanner(System.in);
 	private String userID;
-	
+
 	private List<String> giftCards = new ArrayList<String>();
 
 	public List<String> getGiftCards(){
 		return giftCards;
 	}
-	public User(){
+
+	public User() {
+		
+    	String code = "";
+        int itemp =0;
+        char rChar; 
+        for (int i = 0; i < 3; i++) {
+            itemp = rand(1,0);                              //50/50 chance it does a letter or number
+            if (itemp==0) {
+                itemp = rand(90,65);
+                rChar = (char)itemp;
+                code = code + rChar;
+            }
+            else {
+                itemp = rand(9,0);
+                code = code + itemp;
+            }
+        }
 
 	}
 	public User(String inputString){
 		String[] tokens = inputString.split(";");
 		userID = tokens[0];
 		
+
+		
 	}
 	
     public String getUserId() {
-        get(newGC);
+
+        System.out.println("Enter user ID: ");
+		in.nextLine();
+		return userID;
+    }
+
+	public static int rand(int max, int min) {
+    	
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;        //this method from google works great :)
+
     }
 	
 }

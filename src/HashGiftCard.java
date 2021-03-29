@@ -8,6 +8,8 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
     private int size;
     private static final int DEFAULT_CAPACITY = 150;
     private int capacity;
+    
+
     public HashGiftCard() {
         this(DEFAULT_CAPACITY);
     }
@@ -143,6 +145,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
     	   return oldValue;
        }
     }
+
     @SuppressWarnings("unchecked")
     public void add(K key, V value) {
     	int index = getHashIndex(key);
@@ -151,6 +154,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
     	entries[index] = n;
     	size++;
     }
+
 	@SuppressWarnings("unchecked")
     private Node getNodeForKey(K key) {
     	Node n = (Node)(entries[getHashIndex(key)]);

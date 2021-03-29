@@ -5,10 +5,9 @@ import java.util.Arrays;
 
 public class ArrayList<T> implements List<T> {
     private int size;
-   
     private Object[] list;
     private int capacity;
-    public static final int DEFAULT_CAPACITY = 25;
+    public static final int DEFAULT_CAPACITY = 100;
 
    
     public ArrayList() {

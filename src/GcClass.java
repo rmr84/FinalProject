@@ -4,13 +4,10 @@
 // 4. push 
 
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
-import java.io.PrintWriter;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Random;
 import java.io.FileWriter;
 
@@ -30,15 +27,14 @@ public class GcClass {
     String[] sArray;
     int index = 0;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
-   //Dictionary<User, Integer> dict = new HashGiftCard<>(150);               // implement hashgiftcard
-
+    HashGiftCard<String, User> giftCard = new HashGiftCard<String, User>();     // implement hash dictionary here
 
     try {    
         File gcout = new File("giftcard.txt");                               // create new file
         Scanner in = new Scanner(gcout);
         PrintWriter fout = new PrintWriter(gcout);                           // printwriter to write to file    
          
-        //UserManager.initialize();
+        
         //String userName = UserManager.promptForUser()
 
         if (gcout.exists() && in.hasNext()) {
@@ -53,19 +49,20 @@ public class GcClass {
                         gc.setCurrBal(Double.parseDouble(sArray[4]));
                         gcList.add(gc);
                         //UserManager.addCardToUser(userName, gc.getCodeNum);      
-                        //////////////// UserManagerClass -- readinputfrom file and load to dictionary
-                        ///////////////          UserManager.addUser(scanner.next());
-                        //////////////           UserManager.addUser(userName, firstName, lastName);
+                       
             }
              
         }
+
         else { //file does not yet exist, need to create file
             try {gcout.createNewFile();} catch (IOException e){}
  
         }
+        // prompt user for 
         while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N"))) { //check input for alter collection
             System.out.println("Would you like to modify the gift card collection or add a new one? (Y/N):");
             letter = incmd.nextLine();
+            
          
             if (letter.equalsIgnoreCase("Y")) {
                 while (!(letter.equalsIgnoreCase("A") || letter.equalsIgnoreCase("M"))) { //check input for add or modify
@@ -131,7 +128,7 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();            //create & add new gift card & set number based on list size
                     gcList.add(newGC);
-                    get(newGC.put());
+                    //get(newGC.put());
                    // HashGiftCard.put(User, 1);
                     newGC.setChrono((gcList.size()-1) +1);
  
@@ -139,13 +136,14 @@ public class GcClass {
                     String code = "";
                     code = codeRand();
                 	newGC.setCodeNum(code);
+                  
                     for (int i = 0; i < gcList.size() - 1 - 1; i++) {
                     	while (gcList.get(newGC.getChrono()).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
                     		code = codeRand();
                             newGC.setCodeNum(code);
                     	}
+                    
                     }
-                    	
                     //code rand will make a sequence of 8 random digits
  
                     System.out.println("Randomizing gift card code... \nGift card code will be " + code + "\n");
