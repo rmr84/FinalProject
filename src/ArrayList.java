@@ -157,7 +157,7 @@ public class ArrayList<T> implements List<T> {
 
             @Override
             public void add(T e) {
-                //Insert before next
+                
                 ArrayList.this.add(nextIndex++, e);
             }
 
