@@ -41,16 +41,13 @@ public class GcClass {
                     
                     inLine = in.nextLine();
                     sArray=inLine.split("\\s");                             // splits into array based on spaces
-                        gc.setChrono(Integer.parseInt(sArray[0]));
+                        gc.setChronoNum(Integer.parseInt(sArray[0]));
                         gc.setCodeNum(sArray[1]);
                         gc.setActive(sArray[2].equalsIgnoreCase("true"));
-                        gc.setInitBal(Integer.parseInt(sArray[3]));
-                        gc.setCurrBal(Double.parseDouble(sArray[4]));
+                        gc.setBalanceI(Integer.parseInt(sArray[3]));
+                        gc.setBalanceC(Double.parseDouble(sArray[4]));
                         gcList.add(gc);
-                        
-
-                        //UserManager.addCardToUser(userName, gc.getCodeNum);      
-                       
+                     
             }
              
         }
@@ -60,6 +57,8 @@ public class GcClass {
  
         }
         // prompt user for user ID here, call "getUserId " from user.java
+        //User.getUserId();
+
         while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N"))) { //check input for alter collection
             System.out.println("Would you like to modify the gift card collection or add a new one? (Y/N):");
             letter = incmd.nextLine();
@@ -73,7 +72,7 @@ public class GcClass {
                  }
                 if (letter.equalsIgnoreCase("M")) {
                     int modNum = -1;
-                    while (!(modNum<=0 || modNum >gcList.size())) { //check number within list
+                    while (!(modNum <= 0 || modNum > gcList.size())) { //check number within list
                         //create input for number
                         String balInput = "";
                         int balTry = 0;
@@ -98,7 +97,7 @@ public class GcClass {
                             String balInput = "";        //create variables for parsing
                             double balTry = 0;
                             boolean flag = true;
-                            while (flag || balTry > gcList.get(modNum).getCurrBal()){//makes sure updated balance isn't higher than current
+                            while (flag || balTry > gcList.get(modNum).getBalanceC()){//makes sure updated balance isn't higher than current
                                 System.out.println("What should the balance be updated to?");
                                 balInput = incmd.nextLine();
                                 try{    //try catch for parsing to ensure a double is input
@@ -108,7 +107,7 @@ public class GcClass {
                                 catch (NumberFormatException e){
                                 }
                             }
-                            gcList.get(modNum).setCurrBal(balTry);       //get a specific location in the array and set the current balance
+                            gcList.get(modNum).setBalanceC(balTry);       //get a specific location in the array and set the current balance
                         }
                         else {
                             String actInput = "";
@@ -129,17 +128,16 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();            //create & add new gift card & set number based on list size
                     gcList.add(newGC);
-                    //get(newGC.put());
-                   // HashGiftCard.put(User, 1);
-                    newGC.setChrono((gcList.size()-1) +1);
+                    HashGiftCard.put(newGC, 1);
+                    newGC.setChronoNum((gcList.size()-1) + 1);
  
-                    System.out.println("This will be gift card number "  + newGC.getChrono() + "\n");
+                    System.out.println("This will be gift card number "  + newGC.getChronoNum() + "\n");
                     String code = "";
                     code = codeRand();
                 	newGC.setCodeNum(code);
                   
                     for (int i = 0; i < gcList.size() - 1 - 1; i++) {
-                    	while (gcList.get(newGC.getChrono() - 1).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
+                    	while (gcList.get(newGC.getChronoNum() - 1).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum())); { // error is here
                     		code = codeRand();
                             newGC.setCodeNum(code);
                     	}
@@ -170,7 +168,7 @@ public class GcClass {
                         catch (NumberFormatException e){
                     }
                 }
-                    newGC.setInitBal(balTry);
+                    newGC.setBalanceI(balTry);
                     System.out.println("Inital balance set!\n");
                     balInput = "";
  
@@ -181,7 +179,7 @@ public class GcClass {
                     if (balInput.equalsIgnoreCase("Y")) {
                         balInput="";
                         flag = true;
-                        while (flag || balTry > newGC.getInitBal()){         //make sure current balance will not be greater than initial
+                        while (flag || balTry > newGC.getBalanceI()){         //make sure current balance will not be greater than initial
                             System.out.println("What is the current balance of this card? Ex. 50.25");
                             balInput=incmd.nextLine();
                             try{    //try catch for parsing to ensure a double is input
@@ -190,10 +188,10 @@ public class GcClass {
                             }
                         catch (NumberFormatException e){}
                         }
-                        newGC.setCurrBal(balTry);
+                        newGC.setBalanceC(balTry);
                     }
                     else if (balInput.equalsIgnoreCase("N")){               //balance is same as initial, hasn't been used
-                        newGC.setCurrBal(newGC.getInitBal());
+                        newGC.setBalanceC(newGC.getBalanceI());
                     }
                     System.out.println("Current balance set!\n");
                     System.out.println("Card added to collection successfully!");
@@ -224,7 +222,7 @@ public class GcClass {
 incmd.close();
 }
     private static String print(List<GiftCard> gcList) {     // method to print the data
-        String ret="";
+        String ret = "";
         for (int i = 0; i < gcList.size(); i++) {
             ret = ret + gcList.get(i);  
         }
@@ -234,11 +232,11 @@ incmd.close();
         
     	
     	String code = "";
-        int itemp =0;
+        int itemp = 0;
         char rChar; 
-        for (int i = 0; i<8;i++) {
+        for (int i = 0; i < 8; i++) {
             itemp = rand(1,0);                              //50/50 chance it does a letter or number
-            if (itemp==0) {
+            if (itemp == 0) {
                 itemp = rand(90,65);
                 rChar = (char)itemp;
                 code = code + rChar;

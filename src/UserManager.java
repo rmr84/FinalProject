@@ -10,6 +10,7 @@ public class UserManager {
             String s = scanner.nextLine();
             User user = new User(s);
             users.put(user.getUserId(), user);
+            UserManager.addCardToUser(userID, GC.getCodeNum);
         }
     }
 
@@ -25,5 +26,8 @@ public class UserManager {
     public static AddCardForUser(String userId, String cardNumber){
         users.get(userId).getGiftCards().add(cardNumber);
     }
+
+
+    scanner.close();
 
 }
