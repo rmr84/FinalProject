@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class User {
 	Scanner in = new Scanner(System.in);
-	private String userID;
+	private String userID;      // string for the user id 
 
 	private List<String> giftCards = new ArrayList<String>();
 
@@ -25,6 +25,15 @@ public class User {
         System.out.println("Enter user ID: ");
 		in.nextLine();
 		return userID;
+    }
+
+    public boolean validateID(String userId) {
+        if (userId == getUserId()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 	public static int rand(int max, int min) {

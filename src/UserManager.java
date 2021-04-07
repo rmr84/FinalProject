@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class UserManager {
     private static HashGiftCard<String, User> users = new HashGiftCard<String, User>();
 
-    public static void initialize(){
+    public static void initialize() {
         // code to open "Users.txt" file 
         Scanner scanner = new Scanner("Users.txt");
         while (scanner.hasNext()){
