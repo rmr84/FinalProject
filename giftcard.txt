@@ -1,1 +1,1 @@
-GiftCard [balanceC=100.0, balanceI=100.0, chronoNum=1, codeNum=17SA6H5L, isActive=false]GiftCard [balanceC=5.0, balanceI=5.0, chronoNum=2, codeNum=98KEBC90, isActive=true]
+GiftCard@9baf5c0a

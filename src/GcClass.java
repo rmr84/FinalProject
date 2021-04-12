@@ -11,12 +11,6 @@ import java.io.IOException;
 import java.util.Random;
 import java.io.FileWriter;
 
-//TO-DO List:
-//Iterator (DONE)
-//Figure out second data structure (DONE)
-//File output working --DONE
-//modifying a current value presently does not work
-//randomization method needs to be altered to ensure no duplicates (DONE)
  
 public class GcClass {
     public static void main(String[] args) {
@@ -27,7 +21,7 @@ public class GcClass {
     String[] sArray;
     int index = 0;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
-    HashGiftCard<String, User> map = new HashGiftCard<String, User>();     // implement hash dictionary here
+    HashGiftCard<String, User> map = new HashGiftCard<>();     // implement hash dictionary here
 
     try {    
         File gcout = new File("giftcard.txt");                               // create new file
@@ -128,7 +122,8 @@ public class GcClass {
  
                     GiftCard newGC = new GiftCard();            //create & add new gift card & set number based on list size
                     gcList.add(newGC);
-                    map.put(User.getUserId(), gcList.get(newGC.getChronoNum())); // something along these lines should put the info into the dictionary
+                    
+                   
                     newGC.setChronoNum((gcList.size()-1) + 1);
  
                     System.out.println("This will be gift card number "  + newGC.getChronoNum() + "\n");
