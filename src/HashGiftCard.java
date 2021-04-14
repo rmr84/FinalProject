@@ -40,6 +40,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
         		if (!hasNext()) {
         			throw new NoSuchElementException();
         		}
+                
         		while (currentNode == null) {
         			currentNode = (Node)entries[currentIndex++];
         		}
@@ -72,6 +73,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
         		if (!hasNext()) {
         			throw new NoSuchElementException();
         		}
+
         		while (currentNode == null) {
         			currentNode = (Node)entries[currentIndex++];
         		}
@@ -181,11 +183,13 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
     @Override
     public int size() {
         return size;
+
     }
 
 	private int hashIndex(K key) {
 		int index = key.hashCode() % capacity;
 		return (index < 0) ? (index + capacity) : index;
+
 	}
 	
 	public void rehash(int newCapacity) {
@@ -213,6 +217,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
         if (n < 2) {
             return false;
         }
+
         if (n == 2 || n == 3) {
             return true;
         }
