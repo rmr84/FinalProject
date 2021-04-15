@@ -1,7 +1,5 @@
 import java.util.Iterator;
 import java.util.ListIterator;
-
-
 public interface List<T> extends Iterable<T> {    
 	public boolean add(int index, T obj);    
 	public boolean add(T obj);    
@@ -20,3 +18,4 @@ public interface List<T> extends Iterable<T> {
 	public Object[] toArray();   
     public T[] toArray(T[] a);
     }
+	

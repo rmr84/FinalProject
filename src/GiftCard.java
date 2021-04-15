@@ -66,11 +66,11 @@ public class GiftCard implements Serializable {
         return isActive;
     }
     
-   // @Override
-   // public String toString() {
-   //     return "GiftCard [balanceC=" + balanceC + ", balanceI=" + balanceI + ", chronoNum=" + chronoNum + ", codeNum="
-    //            + codeNum + ", isActive=" + isActive + "]";
-   // } not sure if we need toString?? wasn't in there initially 
+    @Override
+    public String toString() {
+        return chronoNum + ", " + balanceC + ", " + balanceI + ", "  + codeNum + ", " + isActive + "\n";
+               
+    }
     
     @Override
     public int hashCode() {
