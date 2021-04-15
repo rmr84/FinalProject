@@ -2,8 +2,8 @@
 import java.util.Random;
 import java.util.Scanner;
 public class User {
-	Scanner in = new Scanner(System.in);
-	private String userID;      // string for the user id 
+	static Scanner in = new Scanner(System.in);
+	public static String userID;      // string for the user id 
 
 	private List<String> giftCards = new ArrayList<String>();
 
@@ -20,10 +20,10 @@ public class User {
 		
 	}
 	
-    public String getUserId() {
+    public static String getUserId() {
 
         System.out.println("Enter user ID: ");
-		in.nextLine();
+		userID = in.nextLine();
 		return userID;
     }
 

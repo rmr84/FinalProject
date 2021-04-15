@@ -19,7 +19,6 @@ public class GcClass {
     String letter = "x";
     String inLine = "";
     String[] sArray;
-    int index = 0;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
     HashGiftCard<String, User> map = new HashGiftCard<>();     // implement hash dictionary here
 
@@ -41,7 +40,7 @@ public class GcClass {
                         gc.setBalanceI(Integer.parseInt(sArray[3]));
                         gc.setBalanceC(Double.parseDouble(sArray[4]));
                         gcList.add(gc);
-                     
+                         
             }
              
         }
@@ -51,7 +50,8 @@ public class GcClass {
  
         }
         // prompt user for user ID here, call "getUserId " from user.java
-        //User.getUserId();
+        User.getUserId();
+        System.out.println("Hello User!: " + User.userID);
 
         while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N"))) { //check input for alter collection
             System.out.println("Would you like to modify the gift card collection or add a new one? (Y/N):");
