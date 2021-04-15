@@ -19,6 +19,7 @@ public class ArrayList<T> implements List<T> {
     	list = (T[])new Object[initialCapacity];
 		capacity = initialCapacity;
 		size = 0;
+
     }
 
     
@@ -42,6 +43,7 @@ public class ArrayList<T> implements List<T> {
     	if (size == capacity) {
 			resizeArray(2 * capacity);
 		}
+        
 		list[size++] = obj;
 		return true;
     }
