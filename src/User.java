@@ -9,15 +9,12 @@ public class User {
 
 	public List<String> getGiftCards() {
 		return giftCards;
-
 	}
 
 	
 	public User(String inputString){
 		String[] tokens = inputString.split(";");
 		userID = tokens[0];
-		
-		
 	}
 	
     public static String getUserId() {

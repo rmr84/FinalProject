@@ -7,22 +7,26 @@ import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Scanner;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 import java.io.FileWriter;
 
  
 public class GcClass {
+    public final static File ALL_CARDS = new File("dat.ser");
     public static void main(String[] args) {
-     
+    
     Scanner incmd = new Scanner(System.in);
     String letter = "x";
     String inLine = "";
     String[] sArray;
     List<GiftCard> gcList = new ArrayList<GiftCard>();
-    HashGiftCard<String, User> map = new HashGiftCard<>();     // implement hash dictionary here
-
+    HashGiftCard<User, ArrayList> map = initGiftCard();     // implement hash dictionary here
+    
     try {    
         File gcout = new File("giftcard.txt");                               // create new file
         Scanner in = new Scanner(gcout);
@@ -34,7 +38,7 @@ public class GcClass {
                     GiftCard gc = new GiftCard();                            // create gift card object
                     
                     inLine = in.nextLine();
-                    sArray=inLine.split("\\s");                             // splits into array based on spaces
+                    sArray = inLine.split("\\s");                             // splits into array based on spaces
                         gc.setChronoNum(Integer.parseInt(sArray[0]));
                         gc.setCodeNum(sArray[1]);
                         gc.setActive(sArray[2].equalsIgnoreCase("true"));
@@ -53,6 +57,7 @@ public class GcClass {
         // prompt user for user ID here, call "getUserId " from user.java
         User.getUserId();
         System.out.println("Hello User!: " + User.userID);
+        
 
         while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N"))) { //check input for alter collection
             System.out.println("Would you like to modify the gift card collection or add a new one? (Y/N):");
@@ -65,7 +70,7 @@ public class GcClass {
                 System.out.println("Are you adding a new gift card or modifying an existing gift card? (A)/(M)");
                 letter = incmd.nextLine();
                  }
-                if (letter.equalsIgnoreCase("M")) {
+                if (letter.equalsIgnoreCase("M")) { // have to add writeToFile() method here also 
                     int modNum = -1;
                     while (!(modNum <= 0 || modNum > gcList.size())) { //check number within list
                         //create input for number
@@ -207,7 +212,7 @@ public class GcClass {
               }
  
             }
-            }
+        }
             fout.close();
             in.close();
     } catch (FileNotFoundException e) {
@@ -215,18 +220,16 @@ public class GcClass {
     }
     
  
-incmd.close();
-}
+        incmd.close();
+    }
     private static String print(List<GiftCard> gcList) {     // method to print the data
         String ret = "";
         for (int i = 0; i < gcList.size(); i++) {
             ret = ret + gcList.get(i);  
         }
         return ret;
-}
+    }
     private static String codeRand() {	                    //creates a random 8 digit code of random combination of letters and numbers
-        
-    	
     	String code = "";
         int itemp = 0;
         char rChar; 
@@ -249,5 +252,44 @@ incmd.close();
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;        //this method from google works great :)
 
+    }
+
+    public void write(HashGiftCard<String, User> map) {
+        File file = new File("dat.ser");
+
+        try {
+            FileOutputStream fileoutputstream = new FileOutputStream(file);
+            ObjectOutputStream objectoutputstream = new ObjectOutputStream(fileoutputstream);
+            objectoutputstream.writeObject(map);
+            objectoutputstream.close();
+            fileoutputstream.close();
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static HashGiftCard<User, ArrayList> initGiftCard() {
+
+        if (!(ALL_CARDS.exists())) {
+            try {
+                ALL_CARDS.createNewFile();
+            } catch (IOException e) {
+                
+                e.printStackTrace();
+            }
+        }
+
+        HashGiftCard<User, ArrayList> map = new HashGiftCard<>();
+            try {
+            FileInputStream fis = new FileInputStream(ALL_CARDS);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            map = (HashGiftCard<User, ArrayList>) ois.readObject();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 } 
