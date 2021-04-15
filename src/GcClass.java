@@ -2,9 +2,10 @@
 // 2. commit
 // 3. pull 
 // 4. push 
-// uhhhhhhhhhhhhhhhhhh
+
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.File;
 import java.util.Scanner;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class GcClass {
     try {    
         File gcout = new File("giftcard.txt");                               // create new file
         Scanner in = new Scanner(gcout);
-        PrintWriter fout = new PrintWriter(gcout);                           // printwriter to write to file    
+        PrintWriter fout = new PrintWriter(new FileOutputStream(gcout, true));                       // printwriter to write to file    
          
     
         if (gcout.exists() && in.hasNext()) {
@@ -37,7 +38,7 @@ public class GcClass {
                         gc.setChronoNum(Integer.parseInt(sArray[0]));
                         gc.setCodeNum(sArray[1]);
                         gc.setActive(sArray[2].equalsIgnoreCase("true"));
-                        gc.setBalanceI(Integer.parseInt(sArray[3]));
+                        gc.setBalanceI(Double.parseDouble(sArray[3]));
                         gc.setBalanceC(Double.parseDouble(sArray[4]));
                         gcList.add(gc);
                          

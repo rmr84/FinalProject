@@ -68,7 +68,7 @@ public class GiftCard implements Serializable {
     
     @Override
     public String toString() {
-        return chronoNum + ", " + balanceC + ", " + balanceI + ", "  + codeNum + ", " + isActive + "\n";
+        return chronoNum + " " + codeNum + " "  + isActive + " " + balanceI + " " + balanceC + "\n";
                
     }
     
