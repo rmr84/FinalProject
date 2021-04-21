@@ -1,12 +1,11 @@
 
 import java.io.Serializable;
-import java.util.Random;
 import java.util.Scanner;
 public class User implements Serializable {
 	static Scanner in = new Scanner(System.in);
 	public static String userID;      // string for the user id 
 
-	private List<String> giftCards = new ArrayList<String>();
+	private List<String> giftCards = new ArrayList<String>(); 
 
 	public List<String> getGiftCards() {
 		return giftCards;
@@ -21,19 +20,10 @@ public class User implements Serializable {
 	public User()
 	{};
 	
-    public  String getUserId() {
+    public String getUserId() {
 		return userID;
     }
 
-    public boolean validateID(String userId) {
-        if (userId == getUserId()) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    
 
     /**
      * @param giftCards the giftCards to set

@@ -1,3 +1,4 @@
+// Aaron Rugh, Dominic Dupilka, Ryan Ruffing 
 
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -296,7 +297,7 @@ public class GcClass
     {
 
         Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;        //this method from google works great :)
+        return r.nextInt((max - min) + 1) + min;        
 
     }
 
