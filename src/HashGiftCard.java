@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
-public class HashGiftCard<K, V> implements Dictionary<K, V> {
+public class HashGiftCard<K, V> implements Dictionary<K, V>, Serializable{
 
     private Object[] entries; 
     private int size;
@@ -242,7 +243,7 @@ public class HashGiftCard<K, V> implements Dictionary<K, V> {
         return p;
     }
 
-    private class Node {
+    private class Node implements Serializable {
 
         private K key;
         private V value;
