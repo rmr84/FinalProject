@@ -75,7 +75,7 @@ public class GcClass
 		    String userID = incmd.nextLine();
             user.setUserID(userID);
 
-	        System.out.println("Hello, User!: " + user.getUserId());
+	        System.out.println("Hello, " + user.getUserId() + "!");
 
 
             while (!(letter.equalsIgnoreCase("Y") || letter.equalsIgnoreCase("N")))
