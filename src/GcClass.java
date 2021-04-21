@@ -70,59 +70,42 @@ public class GcClass {
                 System.out.println("Are you adding a new gift card or modifying an existing gift card? (A)/(M)");
                 letter = incmd.nextLine();
                  }
+                int modNum = -1;
                 if (letter.equalsIgnoreCase("M")) { // have to add writeToFile() method here also 
-                    int modNum = -1;
-                    while (!(modNum <= 0 || modNum > gcList.size())) { //check number within list
-                        //create input for number
-                        String balInput = "";
-                        int balTry = 0;
-                        boolean flag = true;
-                            while (flag){
-                                System.out.println("What number would you like to modify?");
-                                balInput = incmd.nextLine();
-                                try{    //try catch for parsing to ensure a double is input
-                                    balTry = Integer.parseInt(balInput);
-                                    flag = false;
-                                }
-                                catch (NumberFormatException e){
-                                }
-                            }
-                        modNum = balTry;
+                    
+                    while (modNum <= 0 || modNum > gcList.size()) { //check number within list
+                        //create input for number\
+                        System.out.println("What gift card would you like to modify?");
+                        modNum = incmd.nextInt();
                     }
- 
                     String attrib = "";
                     while (!(attrib.equalsIgnoreCase("B") || attrib.equalsIgnoreCase("A"))) {// check user input for attributes to modify
-                        System.out.println("What attributes will you like to modify? (B for Balance, A for Active) \n");
-                        if (attrib.equalsIgnoreCase("B")) {
-                            String balInput = "";        //create variables for parsing
-                            double balTry = 0;
-                            boolean flag = true;
-                            while (flag || balTry > gcList.get(modNum).getBalanceC()){//makes sure updated balance isn't higher than current
+                        System.out.println("What attributes will you like to modify? (B for Balance, A for Active)\n");
+                        incmd.nextLine();
+                        attrib = incmd.nextLine();
+                        double balTry = -1;
+                        if (attrib.equalsIgnoreCase("B")) {     //create variables for parsing
+                            while (balTry > gcList.get(modNum).getBalanceC() || balTry < 0) {//makes sure updated balance isn't higher than current
                                 System.out.println("What should the balance be updated to?");
-                                balInput = incmd.nextLine();
-                                try{    //try catch for parsing to ensure a double is input
-                                    balTry = Double.parseDouble(balInput);
-                                    flag = false;
+                                balTry = incmd.nextDouble();
                                 }
-                                catch (NumberFormatException e){
-                                }
-                            }
-                            gcList.get(modNum).setBalanceC(balTry);       //get a specific location in the array and set the current balance
+                                gcList.get(modNum-1).setBalanceC(balTry);//get a specific location in the array and set the current balance
                         }
                         else {
                             String actInput = "";
-                            String active = gcList.get(modNum).getActive() ? "active" : "inactive";//ternary to help tell user current active status
+                            String active = gcList.get(modNum-1).getActive() ? " active" : " inactive";//ternary to help tell user current active status
                             while (!(actInput.equalsIgnoreCase("Y") || actInput.equalsIgnoreCase("N"))) {    // check user input for active or inactive
                                 System.out.println("Would you like to change the activity status of the gift card? (Y/N) It is currently" + active + ". \n");
+                                actInput = incmd.nextLine();
                                 if (actInput.equalsIgnoreCase("Y")) {
-                                    gcList.get(modNum).setActive(!(gcList.get(modNum).getActive()));     // get the modnum from index and set the modnum to active if the "get" doesn't find an active card object
+                                    gcList.get(modNum-1).setActive(!(gcList.get(modNum-1).getActive()));     // get the modnum from index and set the modnum to active if the "get" doesn't find an active card object
                                 }
                             }
  
                         }
                     }
-                     
                 }
+                     
                 else if (letter.equalsIgnoreCase("A")){
                     System.out.println("Okay, adding new gift card...");
  
