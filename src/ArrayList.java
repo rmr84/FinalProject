@@ -1,9 +1,11 @@
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.Arrays;
+import java.io.Serializable;
 
 
-public class ArrayList<T> implements List<T> {
+public class ArrayList<T> implements List<T>, Serializable
+{
     private int size;
     private Object[] list;
     private int capacity;
