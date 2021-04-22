@@ -72,6 +72,7 @@ public class GcClass
             }
             // prompt user for user ID here
             User user = new User();
+            System.out.println("------------------------------------------------------");
             System.out.println("Enter user ID: ");
 		    String userID = incmd.nextLine();
             user.setUserID(userID);
@@ -90,7 +91,7 @@ public class GcClass
                     while (!(letter.equalsIgnoreCase("A") || letter.equalsIgnoreCase("M")))
                     { //check input for add or modify
 
-                        System.out.println("Are you adding a new gift card or modifying an existing gift card? (A)/(M)");
+                        System.out.println("Are you adding a new gift card or modifying an existing gift card? (A)/(M)"); //prompt user to choose adding a gift card or modifying one.
                         letter = incmd.nextLine();
                     }
                     int modNum = -1;
@@ -140,16 +141,16 @@ public class GcClass
 
                         newGC.setChronoNum((gcList.size() - 1) + 1);
 
-                        System.out.println("This will be gift card number " + newGC.getChronoNum() + "\n");
+                        System.out.println("This will be gift card number " + newGC.getChronoNum() + "\n"); //print out a new gift card
                         String code = "";
                         code = codeRand();
                         newGC.setCodeNum(code);
 
-                        for (int i = 0; i < gcList.size() - 1 - 1; i++)
+                        for (int i = 0; i < gcList.size() - 1 - 1; i++) 
                         {
                             while (gcList.get(newGC.getChronoNum() - 1).getCodeNum().equalsIgnoreCase(gcList.get(i).getCodeNum()))
                                 ;
-                            { // error is here
+                            {
                                 code = codeRand();
                                 newGC.setCodeNum(code);
                             }
@@ -175,7 +176,7 @@ public class GcClass
                         while (flag)
                         { 
                             System.out.println("What is the initial balance of this card? Ex 100.00 ");
-                            balInput = incmd.nextLine();
+                            balInput = incmd.nextLine(); //getting the inital balance from user
                             try
                             {    //try catch for parsing to ensure a double is input
                                 balTry = Double.parseDouble(balInput);
@@ -190,13 +191,13 @@ public class GcClass
                         System.out.println("Inital balance set!\n");
                         balInput = "";
 
-                        while (!(balInput.equalsIgnoreCase("Y") || balInput.equalsIgnoreCase("N")))
+                        while (!(balInput.equalsIgnoreCase("Y") || balInput.equalsIgnoreCase("N"))) //answering input from user y/n
                         {
                             System.out.println("Is the current balance of this card different than the initial? (Y/N)");
                             
                             balInput = incmd.nextLine();
                         }
-                        if (balInput.equalsIgnoreCase("Y"))
+                        if (balInput.equalsIgnoreCase("Y")) //if the answer is yes, then prompt user to put in a different balance
                         {
                             balInput = "";
                             flag = true;
@@ -216,7 +217,7 @@ public class GcClass
                             }
                             newGC.setBalanceC(balTry);
                         }
-                        else if (balInput.equalsIgnoreCase("N"))
+                        else if (balInput.equalsIgnoreCase("N")) //if user answers no, then use the same balance as initial
                         {               //balance is same as initial, hasn't been used
                             newGC.setBalanceC(newGC.getBalanceI());
                         }
@@ -231,12 +232,13 @@ public class GcClass
                     System.out.println(print(gcList));
                     try
                     {
-                        FileWriter myWriter = new FileWriter("giftcard.txt");
+                        FileWriter myWriter = new FileWriter("giftcard.txt"); //234-245: write to the file to store the giftcard and add to the map
                         myWriter.write(print(gcList));
                         map.put(user, gcList);
                         write(map);
                         myWriter.close();
                         System.out.println("Successfully wrote to the file.");
+                        System.out.println("------------------------------------------------------");
                     }
                     catch (IOException e)
                     {
